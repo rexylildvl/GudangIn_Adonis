@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Category</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r shadow-sm flex flex-col">
+      <div class="p-6 border-b">
+        <h1 class="text-lg font-bold text-gray-900">GudangIn</h1>
+      </div>
+      <nav class="flex-1 p-4 space-y-6">
+        <div>
+          <h2 class="text-xs font-semibold text-gray-500 uppercase mb-2">Platform</h2>
+          <a href="/dashboard"
+            class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4" />
+            </svg>
+            Dashboard
+          </a>
+        </div>
+        <div>
+          <h2 class="text-xs font-semibold text-gray-500 uppercase mb-2">Penjualan</h2>
+          <a href="/salesinventory"
+            class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 3v18h18V3H3zm6 14H7v-4h2v4zm4 0h-2v-8h2v8zm4 0h-2v-6h2v6z" />
+            </svg>
+            Sales & Inventory Dashboard
+          </a>
+        </div>
+        <div>
+          <h2 class="text-xs font-semibold text-gray-500 uppercase mb-2">Management</h2>
+          <a href="/produk"
+            class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M20 13V7a2 2 0 00-2-2h-5.5a1.5 1.5 0 00-3 0H6a2 2 0 00-2 2v6m16 0v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6m16 0H4" />
+            </svg>
+            Manage Products
+          </a>
+          <a href="/kategori"
+            class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-indigo-700 bg-indigo-50 rounded-md">
+            <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+            </svg>
+            Manage Product Categories
+          </a>
+          <a href="/supplier"
+            class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3m-9 9h10M5 21h14a2 2 0 002-2v-5H3v5a2 2 0 002 2z" />
+            </svg>
+            Manage Suppliers
+          </a>
+        </div>
+      </nav>
+      <div class="border-t p-4 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-sm font-bold">
+            RD
+          </div>
+          <span class="text-sm font-medium text-gray-700">Raia Digna Amanda</span>
+        </div>
+      </div>
+    </aside>
+  <div class="min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white p-6 rounded shadow-md w-full max-w-md">
+      <h1 class="text-xl font-bold mb-4 text-gray-800">Edit Category</h1>
+
+      <form action="/kategori/{{ kategori.id }}" method="POST" class="space-y-4">
+        <input type="hidden" name="_method" value="PUT" />
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Category ID</label>
+          <input type="text" value="{{ kategori.id }}" disabled
+            class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded shadow-sm text-gray-500" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Category Name</label>
+          <input type="text" name="nama_kategori" value="{{ kategori.nama_kategori }}" required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
+        </div>
+
+        <div class="flex justify-end space-x-2">
+          <a href="/kategori"
+            class="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 border border-gray-300 rounded">Cancel</a>
+          <button type="submit"
+            class="px-4 py-2 bg-indigo-600 text-white text-sm rounded hover:bg-indigo-700">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
